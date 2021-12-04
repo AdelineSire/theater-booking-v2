@@ -21,7 +21,7 @@ const Select = styled.select`
 	margin-right: 4px;
 `;
 
-function FormGroup({ label, name, type, data }) {
+function FormGroup({ label, name, type, data, register }) {
 	const FormatedInput = () => {
 		if (type === 'select') {
 			return (
@@ -39,7 +39,7 @@ function FormGroup({ label, name, type, data }) {
 			return (
 				<Input type={type} name={name} min='0.00' max='100.00' step='0.5' />
 			);
-		} else return <Input type={type} name={name} />;
+		} else return <Input type={type} name={name} {...register(name)} />;
 	};
 
 	return (
