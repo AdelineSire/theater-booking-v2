@@ -4,9 +4,10 @@
 	--accent-light: #b76767;
 	--section: #ffffff;
 	--row: #e5e5e5;
-	--font: 'Roboto', sans-serif;
+	--font: 'Montserrat', sans-serif;
 }
 
 body {
 	margin: 0;
+	font-family: var(--font);
 }
