@@ -5,7 +5,7 @@ const resData = (res) => {
 	return res.data;
 };
 
-// Get plays and theaters
+// Get plays, theaters, shows, users, roles
 const getData = (dataType) => {
 	return axios.get(API_URL + dataType).then(resData);
 };
@@ -26,10 +26,6 @@ const createShow = (show) => {
 	return axios.post(API_URL + 'show', show).then(resData);
 };
 
-const getShows = () => {
-	return axios.get(API_URL + 'show').then(resData);
-};
-
 const getShow = (id) => {
 	return axios.get(API_URL + 'show/' + id).then(resData);
 };
@@ -38,10 +34,6 @@ const getShow = (id) => {
 const createUser = (user) => {
 	console.log('user in createUser', user);
 	return axios.post(API_URL + 'user', user).then(resData);
-};
-
-const getUsers = () => {
-	return axios.get(API_URL + 'user').then(resData);
 };
 
 const updateUser = (id, newValue) => {
@@ -55,9 +47,7 @@ export {
 	getData,
 	createTheater,
 	createShow,
-	getShows,
 	getShow,
 	createUser,
-	getUsers,
 	updateUser,
 };

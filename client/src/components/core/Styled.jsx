@@ -21,6 +21,7 @@ const Row = styled.div`
 	background-color: var(--row);
 	display: flex;
 	align-items: flex-end;
+	max-width: 100%;
 	padding: 0.4em;
 	margin-bottom: 4px;
 `;

@@ -6,7 +6,7 @@ import { Row } from '../core/Styled';
 
 import { createUser } from '../../services/api';
 
-function UserForm() {
+function UserForm({ roles }) {
 	const { register, handleSubmit, reset } = useForm({
 		defaultValues: {
 			firstname: '',
@@ -17,12 +17,6 @@ function UserForm() {
 			role: '',
 		},
 	});
-	const roles = [
-		{ name: 'Spectateur' },
-		{ name: 'Vendeur' },
-		{ name: 'Hôte' },
-		{ name: 'Admin' },
-	];
 
 	const onSubmitForm = async (formData) => {
 		console.log('data in onsubmitForm', formData);

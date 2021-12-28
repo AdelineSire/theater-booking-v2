@@ -5,6 +5,7 @@ const SyledSelect = styled.select`
 	height: 28px;
 	margin-right: 4px;
 `;
+
 function Select({ name, itemsList, register }) {
 	return (
 		<SyledSelect {...register(name)}>
