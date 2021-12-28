@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { StyledLink } from '../core/Style';
+import { StyledLink } from '../core/Styled';
 
 const Nav = styled.nav`
 	display: flex;
@@ -14,7 +14,10 @@ function Navbar() {
 	return (
 		<Nav>
 			<StyledLink to='/'>Accueil</StyledLink>
+			<StyledLink to='/shows'>Représentations</StyledLink>
 			<StyledLink to='/plays'>Spectacles</StyledLink>
+			<StyledLink to='/theaters'>Salles</StyledLink>
+			<StyledLink to='/users'>Utilisateurs</StyledLink>
 		</Nav>
 	);
 }

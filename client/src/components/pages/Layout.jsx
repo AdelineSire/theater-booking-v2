@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import Navbar from '../navigation/Navbar';
 
-const Container = styled.div`
+const Main = styled.main`
 	background-color: var(--bg);
 	min-height: 100vh;
 	padding: 16px;
@@ -11,10 +11,10 @@ const Container = styled.div`
 
 function Layout() {
 	return (
-		<Container>
+		<Main>
 			<Navbar />
 			<Outlet />
-		</Container>
+		</Main>
 	);
 }
 

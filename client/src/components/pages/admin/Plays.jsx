@@ -1,6 +1,6 @@
 import PlayForm from '../../forms/PlayForm';
 
-import { H2, Section } from '../../core/Style';
+import { H2, Section } from '../../core/Styled';
 
 function Plays() {
 	return (

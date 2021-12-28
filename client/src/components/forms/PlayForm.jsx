@@ -1,20 +1,21 @@
 import { useForm } from 'react-hook-form';
 
-import FormGroup from '../core/FormGroup';
+import FormGroup from './FormGroup';
 import Button from '../core/Button';
-import { Row } from '../core/Style';
+import { Row } from '../core/Styled';
 
 import { createPlay } from '../../services/api';
 
-function PlayForm() {
+function PlayForm({ hide, reload }) {
 	const { register, handleSubmit, reset } = useForm({
 		defaultValues: { title: '' },
 	});
 
-	const onSubmitForm = async (data) => {
-		console.log('data in onsubmitForm', data);
-		await createPlay(data);
+	const onSubmitForm = async (formData) => {
+		await createPlay(formData);
 		reset();
+		reload();
+		hide();
 	};
 	return (
 		<form onSubmit={handleSubmit(onSubmitForm)}>

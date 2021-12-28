@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { StyledLink, H2 } from '../core/Style';
+import { StyledLink, H2 } from '../core/Styled';
 
 const Container = styled.main`
 	display: flex;

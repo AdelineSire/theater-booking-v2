@@ -1,8 +1,20 @@
-import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 const H2 = styled.h2`
 	color: var(--accent);
+`;
+
+const IconButton = styled.div`
+	background-color: var(--accent);
+	color: white;
+	border-radius: 50%;
+	width: 26px;
+	height: 26px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 10px;
 `;
 
 const Row = styled.div`
@@ -26,4 +38,4 @@ const StyledLink = styled(NavLink)`
 	padding: 28px;
 `;
 
-export { H2, Row, Section, StyledLink };
+export { IconButton, H2, Row, Section, StyledLink };
