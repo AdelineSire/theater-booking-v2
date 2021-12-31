@@ -2,6 +2,7 @@ import axios from 'axios';
 import API_URL from './config';
 
 const resData = (res) => {
+	// console.log('res.data in resData', res.data);
 	return res.data;
 };
 

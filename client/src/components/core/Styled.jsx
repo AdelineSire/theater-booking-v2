@@ -17,6 +17,11 @@ const IconButton = styled.div`
 	margin-bottom: 10px;
 `;
 
+const Page = styled.div`
+	display: flex;
+	justify-content: space-between;
+`;
+
 const Row = styled.div`
 	background-color: var(--row);
 	display: flex;
@@ -31,6 +36,20 @@ const Section = styled.div`
 	min-height: 88vh;
 	padding: 4px 8px;
 `;
+const SectionLeft = styled.div`
+	background-color: var(--section);
+	min-height: 88vh;
+	width: 54%;
+	margin-right: 4px;
+	padding: 4px 8px;
+`;
+const SectionRight = styled.div`
+	background-color: var(--section);
+	min-height: 88vh;
+	width: 46%;
+	margin-left: 4px;
+	padding: 4px 8px;
+`;
 
 const StyledLink = styled(NavLink)`
 	color: var(--btntxt);
@@ -39,4 +58,13 @@ const StyledLink = styled(NavLink)`
 	padding: 28px;
 `;
 
-export { IconButton, H2, Row, Section, StyledLink };
+export {
+	IconButton,
+	H2,
+	Page,
+	Row,
+	Section,
+	SectionLeft,
+	SectionRight,
+	StyledLink,
+};

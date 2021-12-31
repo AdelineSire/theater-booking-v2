@@ -5,7 +5,7 @@ import { createShow } from '../../services/api';
 import ExpandableInput from './ExpandableInput';
 import FormGroup from './FormGroup';
 import Button from '../core/Button';
-import { Section } from '../core/Styled';
+import { H2, SectionLeft } from '../core/Styled';
 
 function ShowForm() {
 	const { register, handleSubmit, reset } = useForm({
@@ -25,7 +25,8 @@ function ShowForm() {
 	};
 
 	return (
-		<Section>
+		<SectionLeft>
+			<H2>Ajouter une représentation</H2>
 			<ExpandableInput
 				register={register}
 				dataType='play'
@@ -57,7 +58,7 @@ function ShowForm() {
 				/>
 				<Button>Enregistrer</Button>
 			</form>
-		</Section>
+		</SectionLeft>
 	);
 }
 

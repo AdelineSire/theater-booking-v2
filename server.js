@@ -74,7 +74,7 @@ const initial = () => {
 };
 
 // Middlewares
-const { verifySignUp, authJwt } = require('./middlewares');
+// const { verifySignUp, authJwt } = require('./middlewares');
 
 // Controllers
 const { play, theater, show, user, role, auth } = require('./controllers');
@@ -88,13 +88,13 @@ app.use(function (req, res, next) {
 	next();
 });
 
-app.post(
-	'/signup',
-	[verifySignUp.checkDuplicateEmail, verifySignUp.checkRolesExisted],
-	auth.signup
-);
+// app.post(
+// 	'/signup',
+// 	[verifySignUp.checkDuplicateEmail, verifySignUp.checkRolesExisted],
+// 	auth.signup
+// );
 
-app.post('/signin', auth.signin);
+// app.post('/signin', auth.signin);
 
 app.use('/play', play);
 app.use('/theater', theater);

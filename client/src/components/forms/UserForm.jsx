@@ -19,10 +19,10 @@ function UserForm({ roles }) {
 	});
 
 	const onSubmitForm = async (formData) => {
-		console.log('data in onsubmitForm', formData);
 		await createUser(formData);
 		reset();
 	};
+
 	return (
 		<form onSubmit={handleSubmit(onSubmitForm)}>
 			<Row>

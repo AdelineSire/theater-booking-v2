@@ -7,18 +7,32 @@ import { getData } from '../../../services/api';
 
 function Users() {
 	const [roles, setRoles] = useState();
+	// const [users, setUsers] = useState();
 	const [isLoading, setIsLoading] = useState('true');
 
 	useEffect(() => {
 		getData('role').then((response) => {
 			setRoles(response);
-			setIsLoading('false');
+			setIsLoading(false);
 		});
+		// getData('user').then((response) => {
+		// 	console.log('users in Users', response);
+		// 	setUsers(response);
+		// });
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
+
 	return (
 		<Section>
 			<H2>Utilisateurs</H2>
-			{isLoading ? <p>Chargement</p> : <UserForm roles={roles} />}
+			{isLoading ? (
+				<p>Chargement</p>
+			) : (
+				<div>
+					<UserForm roles={roles} />
+				</div>
+			)}
 		</Section>
 	);
 }
