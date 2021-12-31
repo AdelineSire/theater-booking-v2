@@ -4,7 +4,6 @@ const router = express.Router();
 const { User, Role } = require('../models');
 
 const createUser = (req, res) => {
-	// console.log('req.body: ', req.body);
 	const newUser = req.body;
 	const date = Date.now();
 	const user = new User({
@@ -15,11 +14,9 @@ const createUser = (req, res) => {
 		address: newUser.address,
 	});
 
-	Role.findOne({ name: 'spectator' })
+	Role.findOne({ name: newUser.role.name })
 		.then((role) => {
-			console.log('role: ', role);
 			user.role = role;
-			console.log('user: ', user);
 			user.save(user);
 		})
 		.then((user) => res.json(user))
@@ -32,17 +29,15 @@ const readUsers = (req, res) => {
 	User.find({})
 		.populate('role')
 		.then((users) => {
-			console.log('users in readUsers: ', users);
 			const usersSorted = users.sort((a, b) => (a > b ? -1 : +1));
 			res.json(usersSorted);
 		})
 		.catch((err) => {
-			res.json(err);
+			console.log(err);
 		});
 };
 
 const readUser = (req, res) => {
-	console.log('req.body: ', req.body);
 	const id = req.params.id;
 	User.findOne({ _id: id })
 		.populate('role')
@@ -56,7 +51,6 @@ const readUser = (req, res) => {
 };
 
 const updateUser = (req, res) => {
-	console.log('req.body in updateUser', req.body);
 	const userId = req.params.id;
 	const newValue = req.body.newValue;
 

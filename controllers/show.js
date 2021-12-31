@@ -13,19 +13,17 @@ const createSeats = (row, col) => {
 		}
 		seats.push(chunck);
 	}
-	// console.log('seats: ', seats);
 	return seats;
 };
 
 const createShow = async (req, res) => {
-	// console.log('req.body: ', req.body);
 	const newShow = req.body;
 	const seats = await Theater.findOne({ id: newShow.theater }).then(
 		(theater) => {
 			return createSeats(theater.row, theater.col);
 		}
 	);
-	console.log('seats: ', seats);
+
 	const show = new Show({
 		play: newShow.play,
 		theater: newShow.theater,
@@ -81,7 +79,6 @@ const readShows = (req, res) => {
 
 const readShow = (req, res) => {
 	const id = req.params.id;
-	console.log('req.params.id in readShow : ', id);
 	Show.findOne({ _id: id })
 		.populate(['play', 'theater'])
 		.then((show) => {
@@ -98,7 +95,6 @@ const readShow = (req, res) => {
 				seats: show.seats,
 				date: date,
 			};
-			console.log('formatedShow', formatedShow);
 			res.json(formatedShow);
 		})
 		.catch((err) => {

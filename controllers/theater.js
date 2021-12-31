@@ -4,7 +4,6 @@ const router = express.Router();
 const { Theater } = require('../models');
 
 const createTheater = (req, res) => {
-	console.log('req.body: ', req.body);
 	const newTheater = req.body;
 	const date = Date.now();
 	console.log('date: ', date);

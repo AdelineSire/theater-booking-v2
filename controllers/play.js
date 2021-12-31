@@ -4,7 +4,6 @@ const router = express.Router();
 const { Play } = require('../models');
 
 const createPlay = (req, res) => {
-	console.log('req.body: ', req.body);
 	const newPlay = req.body;
 	const date = Date.now();
 	console.log('date: ', date);
