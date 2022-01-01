@@ -1,6 +1,28 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
+const AuthCard = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 2em;
+	gap: 1em;
+	background-color: var(--section);
+`;
+
+const AuthForm = styled.form`
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+`;
+
+const ErrorMessage = styled.p`
+	color: var(--accent);
+	font-size: 0.8em;
+	margin: 0;
+`;
+
 const H2 = styled.h2`
 	color: var(--accent);
 `;
@@ -19,7 +41,7 @@ const IconButton = styled.div`
 
 const Page = styled.div`
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 `;
 
 const Row = styled.div`
@@ -59,6 +81,9 @@ const StyledLink = styled(NavLink)`
 `;
 
 export {
+	AuthCard,
+	AuthForm,
+	ErrorMessage,
 	IconButton,
 	H2,
 	Page,

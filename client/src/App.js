@@ -7,6 +7,8 @@ import Plays from './components/pages/admin/Plays';
 import Shows from './components/pages/admin/Shows';
 import Theaters from './components/pages/admin/theaters';
 import Users from './components/pages/admin/Users';
+import Login from './components/pages/auth/Login';
+import Signup from './components/pages/auth/Signup';
 
 function App() {
 	return (
@@ -17,6 +19,8 @@ function App() {
 				<Route path='theaters' element={<Theaters />} />
 				<Route path='shows' element={<Shows />} />
 				<Route path='users' element={<Users />} />
+				<Route path='login' element={<Login />} />
+				<Route path='signup' element={<Signup />} />
 			</Route>
 			<Route path='*' element={<NotFound />} />
 		</Routes>

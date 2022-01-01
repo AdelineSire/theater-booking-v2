@@ -18,6 +18,8 @@ function Navbar() {
 			<StyledLink to='/plays'>Spectacles</StyledLink>
 			<StyledLink to='/theaters'>Salles</StyledLink>
 			<StyledLink to='/users'>Utilisateurs</StyledLink>
+			<StyledLink to='/login'>Se connecter</StyledLink>
+			<StyledLink to='/signup'>Créer un compte</StyledLink>
 		</Nav>
 	);
 }
