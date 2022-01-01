@@ -73,29 +73,16 @@ const initial = () => {
 	});
 };
 
-// Middlewares
-// const { verifySignUp, authJwt } = require('./middlewares');
+// Middlewaresn
+const checkDuplicateEmail = require('./middlewares/checkDuplicateEmail');
 
 // Controllers
 const { play, theater, show, user, role, auth } = require('./controllers');
 
 // Routes
-app.use(function (req, res, next) {
-	res.header(
-		'Access-Control-Allow-Headers',
-		'x-access-token, Origin, Content-Type, Accept'
-	);
-	next();
-});
 
-// app.post(
-// 	'/signup',
-// 	[verifySignUp.checkDuplicateEmail, verifySignUp.checkRolesExisted],
-// 	auth.signup
-// );
-
-// app.post('/signin', auth.signin);
-
+app.post('/signup', [checkDuplicateEmail], auth.signup);
+app.post('/login', auth.login);
 app.use('/play', play);
 app.use('/theater', theater);
 app.use('/show', show);

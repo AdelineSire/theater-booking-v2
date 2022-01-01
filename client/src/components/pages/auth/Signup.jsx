@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -6,7 +7,7 @@ import * as yup from 'yup';
 import { AuthCard, AuthForm, ErrorMessage, H2, Page } from '../../core/Styled';
 import FormGroup from '../../forms/FormGroup';
 import Button from '../../core/Button';
-// import { signup } from '../../services/auth-service';
+import { signup } from '../../../services/auth-service';
 
 const signupSchema = yup.object().shape({
 	firstname: yup.string().required(),
@@ -17,6 +18,7 @@ const signupSchema = yup.object().shape({
 });
 
 const SignUpForm = () => {
+	const [usedEmail, setUsedEmail] = useState(false);
 	const {
 		register,
 		handleSubmit,
@@ -28,9 +30,9 @@ const SignUpForm = () => {
 	let navigate = useNavigate();
 
 	const onSubmit = (data) => {
-		console.log('data: ', data);
-		// signup(data);
-		navigate('/login', { replace: true });
+		signup(data).then((response) => {
+			response ? navigate('/login', { replace: true }) : setUsedEmail(true);
+		});
 	};
 
 	return (
@@ -72,7 +74,7 @@ const SignUpForm = () => {
 						type='password'
 						register={register}
 					/>
-
+					{usedEmail && <ErrorMessage>Cet email est déjà utilisé</ErrorMessage>}
 					{errors.firstname && (
 						<ErrorMessage>Veuillez entrer votre prénom</ErrorMessage>
 					)}

@@ -6,7 +6,7 @@ import * as yup from 'yup';
 import { AuthCard, AuthForm, ErrorMessage, H2, Page } from '../../core/Styled';
 import FormGroup from '../../forms/FormGroup';
 import Button from '../../core/Button';
-// import { login } from '../../services/auth-service';
+import { login } from '../../../services/auth-service';
 
 const loginSchema = yup.object().shape({
 	email: yup.string().email().required(),
@@ -26,7 +26,7 @@ function Login() {
 
 	const onSubmit = (data) => {
 		console.log('data: ', data);
-		// login(data);
+		login(data);
 		navigate('/', { replace: true });
 	};
 

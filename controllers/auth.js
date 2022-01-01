@@ -1,10 +1,9 @@
-var jwt = require('jsonwebtoken');
-var bcrypt = require('bcryptjs');
-
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 const config = require('../config/auth.config');
 const { User, Role } = require('../models');
 
-exports.signup = (req, res) => {
+const signup = (req, res) => {
 	const user = new User({
 		firstname: req.body.firstname,
 		lastname: req.body.lastname,
@@ -31,7 +30,6 @@ exports.signup = (req, res) => {
 					}
 
 					user.role = role._id;
-					console.log('user.roles in signup: ', user.role);
 					user.save((err) => {
 						if (err) {
 							res.status(500).send({ message: err });
@@ -43,35 +41,32 @@ exports.signup = (req, res) => {
 				}
 			);
 		} else {
-			Role.findOne({ name: 'spectator' }, (err, role) => {
+			Role.findOne({ name: 'Spectateur' }, (err, role) => {
 				if (err) {
 					res.status(500).send({ message: err });
 					return;
 				}
 
 				user.role = role._id;
-				console.log('user.roles 2 in signup: ', user.role);
 				user.save((err) => {
 					if (err) {
 						res.status(500).send({ message: err });
 						return;
 					}
 
-					res.send({ message: 'User was registered successfully!' });
+					res.send({ success: true });
 				});
 			});
 		}
 	});
 };
 
-exports.signin = (req, res) => {
-	console.log('req.body in signin: ', req.body);
+const login = (req, res) => {
 	User.findOne({
 		email: req.body.email,
 	})
 		.populate('role', '-__v')
 		.exec((err, user) => {
-			console.log('user in signin controller: ', user);
 			if (err) {
 				res.status(500).send({ message: err });
 				return;
@@ -102,8 +97,10 @@ exports.signin = (req, res) => {
 				firstname: user.firstname,
 				lastname: user.lastname,
 				email: user.email,
-				role: user.role.name,
+				role: user.role,
 				accessToken: token,
 			});
 		});
 };
+
+module.exports = { signup, login };
