@@ -21,4 +21,18 @@ const logout = () => {
 	localStorage.removeItem('user');
 };
 
-export { signup, login, logout };
+const getCurrentUser = () => {
+	const user = JSON.parse(localStorage.getItem('user'));
+	if (user) {
+		return axios
+			.get(API_URL + 'user/' + user.id)
+			.then((response) => {
+				return response.data;
+			})
+			.catch((err) => {
+				console.log('err', err);
+			});
+	} else return new Promise((resolve) => resolve(null));
+};
+
+export { signup, login, logout, getCurrentUser };

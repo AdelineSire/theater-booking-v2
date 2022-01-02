@@ -13,7 +13,7 @@ const loginSchema = yup.object().shape({
 	password: yup.string().min(8).max(16).required(),
 });
 
-function Login() {
+function Login({ onLogin }) {
 	const {
 		register,
 		handleSubmit,
@@ -24,9 +24,10 @@ function Login() {
 	});
 	let navigate = useNavigate();
 
-	const onSubmit = (data) => {
+	const onSubmit = async (data) => {
 		console.log('data: ', data);
-		login(data);
+		await login(data);
+		onLogin();
 		navigate('/', { replace: true });
 	};
 

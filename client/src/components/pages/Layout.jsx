@@ -9,10 +9,10 @@ const Main = styled.main`
 	padding: 16px;
 `;
 
-function Layout() {
+function Layout({ onLogout, currentUser }) {
 	return (
 		<Main>
-			<Navbar />
+			<Navbar onLogout={onLogout} currentUser={currentUser} />
 			<Outlet />
 		</Main>
 	);

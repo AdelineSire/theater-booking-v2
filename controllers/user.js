@@ -42,7 +42,6 @@ const readUser = (req, res) => {
 	User.findOne({ _id: id })
 		.populate('role')
 		.then((user) => {
-			console.log('user in readUser: ', user);
 			res.json(user);
 		})
 		.catch((err) => {
