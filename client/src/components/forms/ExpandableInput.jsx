@@ -58,7 +58,7 @@ function ExpandableInput({ register, dataType, inputType }) {
 				<div>
 					<ExpInput>
 						<FormGroup
-							label='Pièce'
+							label={dataType === 'play' ? 'Pièce' : 'Salle'}
 							name={dataType}
 							type={inputType}
 							data={data}
