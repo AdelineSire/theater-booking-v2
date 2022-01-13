@@ -16,22 +16,26 @@ const createSeats = (row, col) => {
 	return seats;
 };
 
+const transformDate = (date) => {
+	const year = date.slice(2, 4);
+	const month = date.slice(5, 7);
+	const day = date.slice(8, 10);
+	const time = date.slice(11, 16);
+	const formatedDate = `${day}/${month}/${year}`;
+	return { date: formatedDate, time: time };
+};
+
 const createShow = async (req, res) => {
 	const newShow = req.body;
+	newShow.formatedDate = transformDate(newShow.date);
 	const seats = await Theater.findOne({ id: newShow.theater }).then(
 		(theater) => {
 			return createSeats(theater.row, theater.col);
 		}
 	);
+	newShow.seats = seats;
 
-	const show = new Show({
-		play: newShow.play,
-		theater: newShow.theater,
-		seats: seats,
-		date: newShow.date,
-		price1: newShow.price1,
-		price2: newShow.price2,
-	});
+	const show = new Show(newShow);
 
 	show
 		.save(show)
@@ -41,35 +45,12 @@ const createShow = async (req, res) => {
 		});
 };
 
-const transformDate = (date) => {
-	const year = date.slice(0, 4);
-	const month = date.slice(5, 7);
-	const day = date.slice(8, 10);
-	const time = date.slice(11, 16);
-	const formatedDate = `${day}-${month}-${year}`;
-	return { date: formatedDate, time: time };
-};
-
 const readShows = (req, res) => {
-	Show.find({})
+	const today = new Date();
+	Show.find({ date: { $gt: today } })
 		.populate(['play', 'theater'])
-		.then((shows) => {
-			const result = shows.map((show) => {
-				const date = transformDate(show.date);
-				const formatedShow = {
-					_id: show._id,
-					price1: show.price1,
-					price2: show.price2,
-					play: show.play.title,
-					theater: {
-						name: show.theater.name,
-						address: show.theater.address,
-					},
-					seats: show.seats,
-					date: date,
-				};
-				return formatedShow;
-			});
+		.then((result) => {
+			console.log('result', result);
 			res.json(result);
 		})
 		.catch((err) => {

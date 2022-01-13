@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import NotFound from './components/pages/NotFound';
 import Layout from './components/pages/Layout';
-import Home from './components/pages/home/Home';
+import Home from './components/pages/Home';
 import Plays from './components/pages/admin/Plays';
 import Shows from './components/pages/admin/Shows';
 import Theaters from './components/pages/admin/theaters';
@@ -28,9 +28,7 @@ function App() {
 	};
 
 	useEffect(() => {
-		console.log('reload');
 		getCurrentUser().then((user) => {
-			console.log('user in useEffet: ', user);
 			setCurrentUser(user);
 			setIsLoading(false);
 		});
@@ -43,20 +41,21 @@ function App() {
 				element={<Layout onLogout={onLogout} currentUser={currentUser} />}
 			>
 				<Route index element={<Home />} />
-				<Route path='login' element={<Login onLogin={onLogin} />} />
-				<Route path='signup' element={<Signup />} />
+				<Route path='connexion' element={<Login onLogin={onLogin} />} />
+				<Route path='compte' element={<Signup />} />
 				{currentUser && (
 					<Route
-						path='profile'
+						path='profil'
 						element={<Profile currentUser={currentUser} />}
 					/>
 				)}
+
 				{currentUser?.role.name === 'Admin' && (
 					<Route path='/admin'>
 						<Route index element={<Shows />} />
-						<Route path='plays' element={<Plays />} />
-						<Route path='theaters' element={<Theaters />} />
-						<Route path='users' element={<Users />} />
+						<Route path='pieces' element={<Plays />} />
+						<Route path='salles' element={<Theaters />} />
+						<Route path='utilisateurs' element={<Users />} />
 					</Route>
 				)}
 			</Route>

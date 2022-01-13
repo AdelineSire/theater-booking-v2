@@ -13,30 +13,29 @@ const Nav = styled.nav`
 const SubNav = styled.div``;
 
 function Navbar({ onLogout, currentUser }) {
-	console.log('currentUser in navbar', currentUser);
 	return (
 		<Nav>
 			<StyledLink to='/'>Accueil</StyledLink>
 			{currentUser?.role.name === 'Admin' && (
 				<SubNav>
 					<StyledLink to='/admin'>Représentations</StyledLink>
-					<StyledLink to='/admin/plays'>Spectacles</StyledLink>
-					<StyledLink to='/admin/theaters'>Salles</StyledLink>
-					<StyledLink to='/admin/users'>Utilisateurs</StyledLink>
+					<StyledLink to='/admin/pièces'>Spectacles</StyledLink>
+					<StyledLink to='/admin/salles'>Salles</StyledLink>
+					<StyledLink to='/admin/utilisateurs'>Utilisateurs</StyledLink>
 				</SubNav>
 			)}
 
 			{currentUser ? (
 				<SubNav>
-					<StyledLink to='/login' onClick={onLogout}>
+					<StyledLink to='/connexion' onClick={onLogout}>
 						Déconnexion
 					</StyledLink>
-					<StyledLink to='/profile'>{currentUser.firstname}</StyledLink>
+					<StyledLink to='/profil'>{currentUser.firstname}</StyledLink>
 				</SubNav>
 			) : (
 				<SubNav>
-					<StyledLink to='/login'>Connexion</StyledLink>
-					<StyledLink to='/signup'>Créer un compte</StyledLink>
+					<StyledLink to='/connexion'>Connexion</StyledLink>
+					<StyledLink to='/compte'>Créer un compte</StyledLink>
 				</SubNav>
 			)}
 		</Nav>

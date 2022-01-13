@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Models
-const { Role } = require('./models');
+const { Role, User } = require('./models');
 
 // BD connection
 const mongoose = require('mongoose');
@@ -30,8 +30,8 @@ mongoose
 		process.exit();
 	});
 
-// Creates roles (spectator, seller, host, admin) in DB
 const initial = () => {
+	// Creates roles (Spectateur, Vendeur, Hôte, Admin) in DB
 	Role.estimatedDocumentCount((err, count) => {
 		if (!err && count === 0) {
 			new Role({
@@ -73,7 +73,7 @@ const initial = () => {
 	});
 };
 
-// Middlewaresn
+// Middlewares
 const checkDuplicateEmail = require('./middlewares/checkDuplicateEmail');
 
 // Controllers

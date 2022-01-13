@@ -26,6 +26,7 @@ const ErrorMessage = styled.p`
 `;
 
 const H2 = styled.h2`
+	font-size: 1.2em;
 	color: var(--accent);
 `;
 
@@ -63,14 +64,14 @@ const Section = styled.div`
 const SectionLeft = styled.div`
 	background-color: var(--section);
 	min-height: 88vh;
-	width: 54%;
+	width: 46%;
 	margin-right: 4px;
 	padding: 4px 8px;
 `;
 const SectionRight = styled.div`
 	background-color: var(--section);
 	min-height: 88vh;
-	width: 46%;
+	width: 54%;
 	margin-left: 4px;
 	padding: 4px 8px;
 `;
@@ -79,7 +80,7 @@ const StyledLink = styled(NavLink)`
 	color: var(--btntxt);
 	text-decoration: none;
 	background-color: var(--accent);
-	padding: 28px;
+	padding: 16px;
 `;
 
 export {
